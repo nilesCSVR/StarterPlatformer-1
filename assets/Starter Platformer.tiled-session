@@ -1,0 +1,87 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "platformer-level-1.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/gilman/Desktop/PlatformImprovement/assets/platformer-level-1.tmx": {
+            "scale": 0.6124,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 798.4977139124755,
+                "y": 267.7988242978445
+            }
+        },
+        "/Users/gilman/Desktop/PlatformImprovement/assets/platformer-level-1.tmx#kenny_tilemap_packed": {
+            "scaleInDock": 1
+        },
+        "/Users/gilman/Desktop/StarterPlatformer copy/assets/platformer-level-1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.7346,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1065.8861965695617,
+                "y": 172.8832017424449
+            }
+        },
+        "/Users/gilman/Desktop/StarterPlatformer copy/assets/platformer-level-1.tmx#kenny_tilemap_packed": {
+            "scaleInDock": 1
+        },
+        "/Users/gilman/Desktop/StarterPlatformer/assets/platformer-level-1.tmx": {
+            "scale": 0.6193,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 868.7227514936219,
+                "y": 269.65929274987894
+            }
+        },
+        "/Users/gilman/Desktop/StarterPlatformer/assets/platformer-level-1.tmx#kenny_tilemap_packed": {
+            "scaleInDock": 1
+        },
+        "platformer-level-1.tmx": {
+            "scale": 0.2768,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1372.8323699421967,
+                "y": 339.5953757225434
+            }
+        },
+        "platformer-level-1.tmx#kenny_tilemap_packed": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "/Users/gilman/Desktop/StarterPlatformer-1/assets",
+    "last.imagePath": "/Users/gilman/Desktop/StarterPlatformer-1/assets",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 18,
+    "map.tileWidth": 18,
+    "map.width": 120,
+    "openFiles": [
+        "/Users/gilman/Desktop/StarterPlatformer/assets/platformer-level-1.tmx",
+        "platformer-level-1.tmx"
+    ],
+    "project": "Starter Platformer.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "/Users/gilman/Desktop/StarterPlatformer copy/assets/platformer-level-1.tmx",
+        "/Users/gilman/Desktop/StarterPlatformer/assets/platformer-level-1.tmx",
+        "/Users/gilman/Desktop/PlatformImprovement/assets/platformer-level-1.tmx",
+        "platformer-level-1.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 18,
+        "width": 18
+    }
+}
