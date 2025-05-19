@@ -16,7 +16,7 @@ class Platformer extends Phaser.Scene {
     create() {
         // Create a new tilemap game object which uses 18x18 pixel tiles, and is
         // 45 tiles wide and 25 tiles tall.
-        this.map = this.add.tilemap("platformer-level-1", 18, 18, 45, 25);
+        this.map = this.add.tilemap("platformer-level-1", 18, 18, 120, 20);
 
         // Add a tileset to the map
         // First parameter: name we gave the tileset in Tiled
@@ -77,6 +77,7 @@ class Platformer extends Phaser.Scene {
         // set up player avatar
         my.sprite.player = this.physics.add.sprite(30, 45, "platformer_characters", "tile_0000.png");
         my.sprite.player.setCollideWorldBounds(true);
+        this.physics.world.setBounds(0,0,this.map.widthInPixels,this.map.heightInPixels);
 
         // Enable collision handling
         this.physics.add.collider(my.sprite.player, this.groundLayer);
