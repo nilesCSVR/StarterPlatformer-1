@@ -114,6 +114,19 @@ class Platformer extends Phaser.Scene {
 
         my.vfx.walking.stop();
 
+        //jump particles
+        my.vfx.jumping = this.add.particles(0, 0, "kenny-particles", {
+            frame: ['smoke_02.png', 'smoke_03.png'],
+            scale: { start: 0.05, end: 0 },
+            lifespan: 300,
+            alpha: { start: 1, end: 0 },
+            speed: { min: 100, max: 200 },
+            angle: { min: 240, max: 300 },
+            quantity: 10,
+            gravityY: -300
+        });
+        my.vfx.jumping.stop(); 
+
         
 
         // TODO: add camera code here
@@ -163,6 +176,16 @@ class Platformer extends Phaser.Scene {
             // TODO: have the vfx stop playing
             my.vfx.walking.stop();
         }
+        
+
+        if (my.sprite.player.y > this.map.heightInPixels) {
+            this.handlePlayerDeath();
+        }
+        if (this.waitingForRestart && Phaser.Input.Keyboard.JustDown(this.rKey)) {
+            this.scene.restart();
+        }
+        
+
 
         // player jump
         // note that we need body.blocked rather than body.touching b/c the former applies to tilemap tiles and the latter to the "ground"
@@ -171,10 +194,47 @@ class Platformer extends Phaser.Scene {
         }
         if(my.sprite.player.body.blocked.down && Phaser.Input.Keyboard.JustDown(cursors.up)) {
             my.sprite.player.body.setVelocityY(this.JUMP_VELOCITY);
+        my.vfx.jumping.emitParticleAt(
+            my.sprite.player.x,
+            my.sprite.player.y + my.sprite.player.displayHeight / 2
+         );
+
+        } else {
+
+            my.vfx.jumping.stop();
         }
+
+        
+
 
         if(Phaser.Input.Keyboard.JustDown(this.rKey)) {
             this.scene.restart();
         }
+
+        
+
+        
     }
+
+    handlePlayerDeath() {
+        // Stop player input
+        this.physics.world.pause();
+        my.sprite.player.setTint(0xff0000);  // Optional: red tint on death
+        my.sprite.player.anims.stop();
+    
+        // Show "You Died" text
+        this.deathText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, 'YOU DIED\nPress R to Restart', {
+            fontSize: '48px',
+            fill: '#ffffff',
+            fontFamily: 'Arial',
+            fontStyle: 'bold',
+            align: 'center'
+        }).setOrigin(0.5);
+        this.deathText.setScrollFactor(0);
+        this.deathText.setDepth(9999);
+    
+        // Set flag to wait for restart key
+        this.waitingForRestart = true;
+    }
+    
 }
