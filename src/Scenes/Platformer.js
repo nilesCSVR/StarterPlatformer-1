@@ -3,6 +3,8 @@ class Platformer extends Phaser.Scene {
         super("platformerScene");
     }
 
+    
+
     init() {
         // variables and settings
         this.ACCELERATION = 300;
@@ -11,6 +13,9 @@ class Platformer extends Phaser.Scene {
         this.JUMP_VELOCITY = -600;
         this.PARTICLE_VELOCITY = 50;
         this.SCALE = 2.0;
+        this.waitingForRestart = false;
+        this.hasWon = false;
+
     }
 
     create() {
@@ -77,7 +82,7 @@ class Platformer extends Phaser.Scene {
         // set up player avatar
         my.sprite.player = this.physics.add.sprite(30, 45, "platformer_characters", "tile_0000.png");
         my.sprite.player.setCollideWorldBounds(true);
-        this.physics.world.setBounds(0,0,this.map.widthInPixels,this.map.heightInPixels);
+        this.physics.world.setBounds(0,0,this.map.widthInPixels,1000);
 
         // Enable collision handling
         this.physics.add.collider(my.sprite.player, this.groundLayer);
@@ -87,6 +92,7 @@ class Platformer extends Phaser.Scene {
             obj2.destroy(); // remove coin on overlap
             this.coinsCollected += 1; // increment score
             this.coinText.setText(`Coins: ${this.coinsCollected}`); // update text
+            this.sound.play("coinSound");
         });
 
         // set up Phaser-provided cursor key input
@@ -213,7 +219,9 @@ class Platformer extends Phaser.Scene {
         }
 
         
-
+        if (!this.hasWon && this.coinsCollected >= 10) {
+            this.handlePlayerWin();
+        }
         
     }
 
@@ -237,5 +245,27 @@ class Platformer extends Phaser.Scene {
         // Set flag to wait for restart key
         this.waitingForRestart = true;
     }
+
+    handlePlayerWin() {
+        this.hasWon = true;
+        this.physics.world.pause();
+        my.sprite.player.anims.stop();
+    
+        // Show "You Win!" text
+        this.winText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, 'YOU WIN!\nPress R to Restart', {
+            fontSize: '48px',
+            fill: '#ffffff',
+            fontFamily: 'Arial',
+            fontStyle: 'bold',
+            align: 'center'
+        }).setOrigin(0.5);
+    
+        this.winText.setScrollFactor(0);
+        this.winText.setDepth(9999);
+    
+        this.waitingForRestart = true;
+    }
+    
+    
     
 }
